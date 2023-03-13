@@ -48,12 +48,24 @@ class ProduktTest {
 
     @Test
     void mathstream() {
-        Stream<Integer> infiniteStream = Stream.iterate(0, i -> i + 8);
-        List<Integer> collect = infiniteStream
-                .limit(100)
+        List<Produkt> collect = IntStream.range(0, 100)
+                .mapToObj(operand -> {
+                    int id = 10;
+                    String tytul = "maslo";
+                    BigDecimal price = new BigDecimal(operand);
+                    return new Produkt(id, tytul, price);
+                })
                 .collect(Collectors.toList());
 
-        assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
+
+//
+//        /* other operations on the stream including a terminal one */;
+//        //Stream<Integer> infiniteStream = Stream.iterate(0, i -> i + 8);
+//        //List<Integer> collect = infiniteStream
+//               // .limit(100)
+//                .collect(Collectors.toList());
+
+      //  assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
     }
 }
 
