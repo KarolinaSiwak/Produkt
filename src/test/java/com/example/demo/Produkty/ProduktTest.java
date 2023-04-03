@@ -48,7 +48,7 @@ class ProduktTest {
 
     @Test
     void mathstream() {
-        List<Produkt> collect = IntStream.range(0, 100)
+        List<Produkt> lista = IntStream.range(0, 100)
                 .mapToObj(operand -> {
                     int id = 10;
                     String tytul = "maslo";
@@ -56,6 +56,11 @@ class ProduktTest {
                     return new Produkt(id, tytul, price);
                 })
                 .collect(Collectors.toList());
+        for (int i = 0; i < 100; i++) {
+            assertEquals(lista.get(i).getPrice(), BigDecimal.valueOf(i));
+
+
+        }
 
 
 //
