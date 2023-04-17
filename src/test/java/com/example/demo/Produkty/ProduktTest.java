@@ -31,6 +31,8 @@ class ProduktTest {
     @Test
     void mathrandom() {
         int i;
+        BigDecimal expectedTotal = BigDecimal.ZERO;
+        BigDecimal total = BigDecimal.ZERO;
         for (i = 0; i < 100; i++) {
             Random mathrandom = new Random();
             int myRandInt = mathrandom.ints(1, 101).findAny().getAsInt();
@@ -41,7 +43,13 @@ class ProduktTest {
             Produkt zmienna = new Produkt(id, tytul, price);
             assertTrue(myRandInt >= 1);
             assertTrue(myRandInt <= 101);
+
+
+            expectedTotal = expectedTotal.add(new BigDecimal(myRandInt));
+            total = total.add(price);
         }
+        assertEquals(expectedTotal, total);
+        System.out.println("Suma wynosi: " + total);
 
     }
 
@@ -60,6 +68,8 @@ class ProduktTest {
             assertEquals(lista.get(i).getPrice(), BigDecimal.valueOf(i));
 
 
+
+
         }
 
 
@@ -71,6 +81,11 @@ class ProduktTest {
 //                .collect(Collectors.toList());
 
       //  assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
+    }
+
+    @Test
+    void getPrices() {
+
     }
 }
 
