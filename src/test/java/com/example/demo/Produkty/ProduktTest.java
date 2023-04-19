@@ -1,18 +1,20 @@
 package com.example.demo.Produkty;
 
+import jdk.internal.foreign.abi.Binding;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProduktTest {
+
+    private Binding.Allocate lista;
 
     @Test
     void create() {
@@ -68,34 +70,43 @@ class ProduktTest {
             assertEquals(lista.get(i).getPrice(), BigDecimal.valueOf(i));
 
 
+            int leftLimit = 97; // letter 'a'
+            int rightLimit = 122; // letter 'z'
+            int targetStringLength = 10;
+            Random random = new Random();
+            StringBuilder buffer = new StringBuilder(targetStringLength);
+            for (int c = 0; c < targetStringLength; c++) {
+                int randomLimitedInt = leftLimit + (int)
+                        (random.nextFloat() * (rightLimit - leftLimit + 1));
+                buffer.append((char) randomLimitedInt);
+            }
+            String generatedString = buffer.toString();
+
+            System.out.println(generatedString);
+        }
 
 
         }
 
 
-//
-//        /* other operations on the stream including a terminal one */;
-//        //Stream<Integer> infiniteStream = Stream.iterate(0, i -> i + 8);
-//        //List<Integer> collect = infiniteStream
-//               // .limit(100)
-//                .collect(Collectors.toList());
 
-      //  assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
-    }
+  //  @Test
+    //void getPrices(){
+      //  getPrices();
+        //getProdukt();
+        //this.lista.size() = 100;
+        //List<BigDecimal> prices = new ArrayList<>();
+        //for (int i = 0; i < 100; i++){
+          //  Produkt produkt = lista.getClass(i);
+            //BigDecimal price1 = produkt.getPrice();
+            //prices.add(price1);
+        //}
+        //return prices;
+    //}
+    //private void getProdukt() {
+    //}
 
-    @Test
-    void getPrices() {
-
-    }
 }
 
 
-//IntStream.range(0, 10).parallel().forEach(
-//nbr -> {
-//try {
-//  Thread.sleep(100);
-//} catch (InterruptedException ex) {
-//}
-
-//System.out.println(nbr);};}
 
